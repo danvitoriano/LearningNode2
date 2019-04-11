@@ -35,14 +35,14 @@ InputChecker.prototype.check = function check(input) {
 };
 
 // testing new object and event handling
-let ic = new InputChecker('Shelley','output');
+let ic = new InputChecker('Eu','output');
 
 ic.on('write', function(data) {
    this.writeStream.write(data, 'utf8');
 });
 
 ic.on('echo', function( data) {
-   process.stdout.write(ic.name + ' wrote ' + data);
+   process.stdout.write(ic.name + ' escrevi ' + data);
 });
 
 ic.on('end', function() {
@@ -51,6 +51,7 @@ ic.on('end', function() {
 
 // capture input after setting encoding
 process.stdin.setEncoding('utf8');
+process.stdout.write('Escreva um texto: ');
 process.stdin.on('readable', function() {
    let input = process.stdin.read();
    if (input !== null)
